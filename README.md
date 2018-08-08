@@ -4,7 +4,8 @@
 Overview:  
 I wanted to create an secure Online bookstore which is an online web application, where customer can login or register an username and password in online bookstore to purchase books online.
 
-Features
+Features:
+
 User Login: Users will be able to create accounts and log in to the application. Each user will have a profile page.
 
 Search Engine: Users will be able to search for books.
