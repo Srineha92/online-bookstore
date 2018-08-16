@@ -16,6 +16,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     private UserService userService;
+
 // we make sure to permit all access to the /regiatration page
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -26,6 +27,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/js/**",
                         "/css/**",
                         "/img/**",
+                        "/bookshelf",
+                        "/bookDetail",
                         "/webjars/**").permitAll()
                 .anyRequest().authenticated()
                 .and()

@@ -1,6 +1,7 @@
 package org.finalproject.bookstorefinal.service;
 
 import org.finalproject.bookstorefinal.Account.Role;
+import org.finalproject.bookstorefinal.Account.ShoppingCart;
 import org.finalproject.bookstorefinal.Account.User;
 import org.finalproject.bookstorefinal.UserRegistrationDto;
 import org.finalproject.bookstorefinal.repository.UserRepository;
@@ -11,6 +12,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Arrays;
 import java.util.Collection;
@@ -26,11 +28,18 @@ public class UserServiceImpl implements UserService {
     private BCryptPasswordEncoder passwordEncoder;
 //In the UserServiceImpl we implement the methods to lookup a user by email
     @Override
+    @Transactional
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         User user = userRepository.findByEmail(email);
         if (user == null){
             throw new UsernameNotFoundException("Invalid username or password.");
         }
+
+        ShoppingCart shoppingCart = new ShoppingCart();
+        shoppingCart.setUser(user);
+        user.setShoppingCart(shoppingCart);
+
+
         return new org.springframework.security.core.userdetails.User(user.getEmail(),
                 user.getPassword(),
                 mapRolesToAuthorities(user.getRoles()));
