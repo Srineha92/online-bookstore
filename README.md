@@ -8,13 +8,16 @@ Features:
 
 User Login: Users will be able to create accounts and log in to the application. Each user will have a profile page.
 
-Search Engine: Users will be able to search for books.
+Add New Book: we can add new book to the bookshelf
 
-Books list: It has list of books with its discription.
+Books list: It has list of books with its description. 
 
-Shopping cart: Users can shop for books and add it to the cart to checkout.
+BookShelf: It has books in it with "Add to cart" option where they can add book to cart
+
+Shopping cart: Users can shop for books and add it to the cart.
 
 Technologies
+
 1.HTML
 
 2.CSS
